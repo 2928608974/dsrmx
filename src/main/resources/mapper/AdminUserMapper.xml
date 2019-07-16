@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+    Welcome to use the TableGo Tools.
+    
+    http://vipbooks.iteye.com
+    http://blog.csdn.net/vipbooks
+    http://www.cnblogs.com/vipbooks
+    
+    Author:bianj
+    Email:edinsker@163.com
+    Version:5.8.8
+-->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 系统用户表(adminuser) -->
+<mapper namespace="com.bdqn.dao.AdminUserMapper">
+    
+    <!-- 表所有字段 -->
+    <sql id="allColumns">
+        user_id, login_name, user_name, user_password, remark
+    </sql>
+    
+    <!-- 查询所有数据 -->
+    <select id="findAdminUserAll" resultType="adminUser">
+        SELECT
+        <include refid="allColumns" />
+        FROM adminuser
+    </select>
+
+    <select id="selAdminUserByName" resultType="adminUser">
+        SELECT
+        <include refid="allColumns" />
+        FROM adminuser WHERE login_name=#{loginName}
+    </select>
+</mapper>
